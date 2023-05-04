@@ -41,12 +41,14 @@
         appear
           enter-active-class="animated fadeIn"
           leave-active-class="animated fadeOut"
-      />
+      >
 
         <q-item 
           v-for="qweet in qweets"
-          :key="qweet.date"
-          class="q-py-md">
+          :key="qweet.id" 
+            class="qweet q-py-md"
+            >
+
 
            <q-item-section avatar top>
             <q-avatar>
@@ -55,49 +57,62 @@
           </q-item-section>  
           
           <q-item-section>
-            <q-item-label><strong> George Royce </strong>  </q-item-label>
-             <q-item-label class="qweet-content"> {{ qweet.content}}
-            </q-item-label>
+            <q-item-label class="text-subtitle1">
+            <strong> George Royce </strong>
+            <span class="text-grey-7">
+                @manizha_salomova
+                <br class="lt-md">&bull; {{qweet.date | relativeDate}}
+                </span>
+              </q-item-label>
+              <q-item-label class="qweet-content text-body1">
+                  {{qweet.content}}    
+              </q-item-label>
+
               <div class="row justify-between q-mt-sm">
                 <q-btn 
                   flat 
                   round 
                   color="gray" 
-                  icon="far fa-comment"/>
+                  icon="far fa-comment"
+                  size="sm" 
+                  />
 
                  <q-btn 
                   flat 
                   round 
                   color="gray" 
-                  icon="fas fa-retweet"/>
+                  icon="fas fa-retweet"
+                  size="sm" 
+                  />
 
-                   <q-btn 
-                  flat 
-                  round 
-                  color="gray" 
-                  icon="far fa-heart"/>
+                <q-btn
+                @click="toggleLiked(qweet)" 
+                flat 
+                round 
+                :color="qweet.liked ? 'pink' : 'gray'" 
+                :icon="qweet.liked ? 'fas  fa-heart' : 'far fa-heart'" 
+                size="sm"
+                />
+                <q-btn
+                @click="deleteQweet(qweet)" 
+                flat 
+                round 
+                color="grey" 
+                icon="fas fa-trash"
+                size="sm" 
+                />
 
-                   <q-btn 
-                  flat 
-                  round 
-                  color="gray" 
-                  icon="fas fa-trash"/>
               
 
             </div>   
-          </q-item-section>          
-          <q-item-section side top> 
-            {{ qweet.date}}
-
-          </q-item-section>
-        
-        
-        </q-item>
-    </q-list>  
-
-    </q-scroll-area>
+            </q-item-section>
+          </q-item>
+          </transition-group> 
+      </q-list>
+    </q-scroll-area> 
   </q-page>
 </template>
+
 
 <script>
 //import db from 'src/boot/firebase'
