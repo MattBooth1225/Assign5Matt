@@ -99,6 +99,9 @@
 </template>
 
 <script>
+//import db from 'src/boot/firebase'
+import { formatDistance } from 'date-fns'
+
 export default {
   name: 'PageHome',
   data() {
@@ -157,9 +160,31 @@ export default {
     relativeDate(value){
       return formatDistance(value, new Date())
     }
-  }//,  
-
+  },    
+  mounted() {
+    //db.collection('qweets').orderBy('date').onSnapshot(snapshot => {
+          //snapshot.docChanges().forEach(change => {
+            //let qweetChange = change.doc.data()
+            //qweetChange.id = change.doc.id
+              //if (change.type === 'added') {
+                //console.log('New qweet: ', qweetChange)
+                //this.qweets.unshift(qweetChange)
+              //}
+              //if (change.type === 'modified') {
+                //console.log('Modified qweet: ', qweetChange)
+                //let index = this.qweets.findIndex(qweet => qweet.id === qweetChange.id)
+                //Object.assign(this.qweets[index], qweetChange)
+              //}
+              //if (change.type === 'removed') {
+                //console.log('Removed qweet: ', qweetChange)
+                //let index = this.qweets.findIndex(qweet => qweet.id === qweetChange.id)
+                //this.qweets.splice(index, 1)
+              //}
+          //})
+    //})
+  }
 }
+
 </script>
 
 <style lang ="sass">
