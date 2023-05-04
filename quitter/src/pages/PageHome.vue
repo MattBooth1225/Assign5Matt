@@ -61,7 +61,7 @@
             <strong> George Royce </strong>
             <span class="text-grey-7">
                 @manizha_salomova
-                <br class="lt-md">&bull; {{qweet.date | relativeDate}}
+                <br class="lt-md">&bull; {{qweet.date}}
                 </span>
               </q-item-label>
               <q-item-label class="qweet-content text-body1">
@@ -115,7 +115,7 @@
 
 
 <script>
-import db from 'src/boot/firebase'
+import db from 'src/boot/firebase.js'
 import { formatDistance } from 'date-fns'
 
 export default {
