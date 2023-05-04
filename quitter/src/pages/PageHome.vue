@@ -1,25 +1,26 @@
 <template>
   <q-page class="relative-position"> 
-    <q-scroll-area class="absolute fullscreen">
+    <q-scroll-area class="absolute full-width full-height">
     <div class="q-py-lg q-px-md row items-end q-col-gutter-md">
       <div class="col">
         <q-input 
-            v-model="newQweetContent"
+            bottom-slots 
+            class="new-qweet"
+            v-model="newQweetContent" 
             placeholder="What's happening?" 
             counter 
             maxlength="280" 
-            botton-slots
+            :dense="dense"
             autogrow
-            class="new-queet"
-        >
-        <template v-slot:before>
-          <q-avatar size="xl">
-          <img src="https:/cdn.quasar.dev/img/avatar5.jpg">
-        </q-avatar>  
-        </template>
+          >
+            <template v-slot:before>
+              <q-avatar size="">
+                <img src="https://cdn.quasar.dev/img/avatar5.jpg">
+              </q-avatar>
+            </template>
+          </q-input>
+        </div>
 
-        </q-input>
-      </div>
     
       <div class="col col-shrink">            
           <q-btn 
